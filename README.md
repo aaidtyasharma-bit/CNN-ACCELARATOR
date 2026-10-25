@@ -122,10 +122,18 @@ OVERALL STATUS: PHYSICAL DESIGN CLEAN & TIMING MET
 ## 📊 Interactive Viewers & Artifacts
 
 The repository includes standalone HTML5 / SVG viewers to inspect the design without needing a full EDA install:
+- **`openroad/openroad_full_chip_layout.png`**: High-resolution Silicon Tapeout layout diagram (Floorplan, Standard Cell Placement, CTS, and Met4/Met5 PDN Stripes).
 - **`syn/innovus_chip_viewer.html`**: Interactive canvas chip viewer for cell placement, density heatmap, and power rings.
 - **`openroad/openroad_viewer.html`**: OpenROAD layout visualizer with layer toggling (Met1–Met5, standard cells, clock nets).
 - **`syn/full_chip_flattened.svg`**: High-resolution vector schematic of the synthesized accelerator core.
 - **`syn/view_schematics.html`**: Interactive schematic explorer.
+
+<p align="center">
+  <img src="openroad/openroad_full_chip_layout.png" alt="OpenROAD Full Chip Silicon Layout" width="700"/>
+  <br/>
+  <em>Figure: Full Chip Physical Silicon Layout rendered from OpenROAD Tapeout DEF in SkyWater 130nm HD</em>
+</p>
+
 
 ---
 
