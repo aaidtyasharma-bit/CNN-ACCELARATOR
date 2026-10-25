@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Save File for Full CNN Accelerator Top Module
+[*]
+[dumpfile] "/home/ady/CNN ACCELARATOR/outputs/waveforms/accelerator_full.vcd"
+[savefile] "/home/ady/CNN ACCELARATOR/outputs/waveforms/accelerator_full.gtkw"
+[timestart] 0
+[size] 1600 900
+[pos] -1 -1
+*-20.000000 150000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_cnn_accelerator_full.
+[treeopen] tb_cnn_accelerator_full.dut.
+@28
+tb_cnn_accelerator_full.clk
+tb_cnn_accelerator_full.rst_n
+tb_cnn_accelerator_full.start
+tb_cnn_accelerator_full.mode_fc
+@25
+tb_cnn_accelerator_full.bias_in[31:0]
+@24
+tb_cnn_accelerator_full.data_in[7:0]
+tb_cnn_accelerator_full.weight_in[7:0]
+@28
+tb_cnn_accelerator_full.in_valid
+tb_cnn_accelerator_full.last_element
+@25
+tb_cnn_accelerator_full.acc_out[31:0]
+@24
+tb_cnn_accelerator_full.act_out_relu[7:0]
+@28
+tb_cnn_accelerator_full.busy
+tb_cnn_accelerator_full.done
+@200
+-
+-MAX POOLING ENGINE
+@28
+tb_cnn_accelerator_full.pool_enable
+@24
+tb_cnn_accelerator_full.p00[7:0]
+tb_cnn_accelerator_full.p01[7:0]
+tb_cnn_accelerator_full.p10[7:0]
+tb_cnn_accelerator_full.p11[7:0]
+tb_cnn_accelerator_full.pool_out[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

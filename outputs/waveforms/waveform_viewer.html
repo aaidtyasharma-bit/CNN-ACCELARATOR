@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CNN Accelerator Hardware Waveform Viewer</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 24px;
+    }
+    h1 {
+      color: #58a6ff;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #8b949e;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+    .card {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid #30363d;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #30363d;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background-color: #21262d;
+      color: #58a6ff;
+    }
+    .pass {
+      color: #3fb950;
+      font-weight: bold;
+    }
+    code {
+      background-color: #21262d;
+      color: #79c0ff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CNN Accelerator RTL Waveform Viewer</h1>
+  <div class="subtitle">Simulation of <code>rtl/cnn_mac.sv</code> and <code>rtl/cnn_relu_sat_u8.sv</code> with testbench <code>tb/tb_cnn_mac.sv</code></div>
+
+  <div class="card">
+    <h2>1. Digital Timing Waveform (PNG)</h2>
+    <img src="waveform_timing_diagram.png" alt="Hardware Waveform">
+  </div>
+
+  <div class="card">
+    <h2>2. Cycle-by-Cycle Hardware Signal Behavior</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Time (ns)</th>
+          <th>Cycle</th>
+          <th>clk</th>
+          <th>rst_n</th>
+          <th>start</th>
+          <th>busy</th>
+          <th>in_valid</th>
+          <th>data_in</th>
+          <th>weight_in</th>
+          <th>last</th>
+          <th>Accumulator</th>
+          <th>done</th>
+          <th>Hardware Event / Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0 - 20</td>
+          <td>0 - 1</td>
+          <td>~</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Active-low reset clearing all internal registers</td>
+        </tr>
+        <tr>
+          <td>20 - 30</td>
+          <td>2</td>
+          <td>~</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Reset deasserted; hardware idle</td>
+        </tr>
+        <tr>
+          <td>30 - 40</td>
+          <td>3</td>
+          <td>~</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+          <td>0</td>
+          <td><code>start=1</code> loads <code>bias_in=5</code> into accumulator; asserts <code>busy=1</code></td>
+        </tr>
+        <tr>
+          <td>40 - 50</td>
+          <td>4</td>
+          <td>~</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>0</td>
+          <td>11</td>
+          <td>0</td>
+          <td>MAC operation: <code>5 + (2 * 3) = 11</code></td>
+        </tr>
+        <tr>
+          <td>50 - 60</td>
+          <td>5</td>
+          <td>~</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>-1</td>
+          <td>4</td>
+          <td>0</td>
+          <td>7</td>
+          <td>0</td>
+          <td>MAC operation: <code>11 + (-1 * 4) = 7</code></td>
+        </tr>
+        <tr>
+          <td>60 - 70</td>
+          <td>6</td>
+          <td>~</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>10</td>
+          <td>2</td>
+          <td>0</td>
+          <td>27</td>
+          <td>0</td>
+          <td>MAC operation: <code>7 + (10 * 2) = 27</code></td>
+        </tr>
+        <tr>
+          <td>70 - 80</td>
+          <td>7</td>
+          <td>~</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>-3</td>
+          <td>5</td>
+          <td>1</td>
+          <td>12</td>
+          <td>0</td>
+          <td><code>last=1</code> asserted: <code>27 + (-3 * 5) = 12</code></td>
+        </tr>
+        <tr>
+          <td>80 - 90</td>
+          <td>8</td>
+          <td>~</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>12</td>
+          <td>1</td>
+          <td><span class="pass">DONE:</span> Asserts <code>done=1</code>, clears <code>busy=0</code>, ReLU output = <code>12</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>3. How to Open in GTKWave (Native Linux GUI)</h2>
+    <p>Run the following command in your terminal to install and open GTKWave:</p>
+    <pre><code>sudo apt-get install -y gtkwave
+gtkwave outputs/waveforms/cnn_mac_simulation.vcd &</code></pre>
+  </div>
+
+</body>
+</html>

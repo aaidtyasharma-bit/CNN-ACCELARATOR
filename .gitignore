@@ -1,0 +1,22 @@
+# External large tool flow repository and build artifacts
+openroad-flow-scripts/
+build/
+.venv
+Vtb_cnn_mac
+
+# Raw MNIST dataset (auto-downloaded by PyTorch torchvision)
+data/MNIST/raw/
+data/MNIST/processed/
+
+# Large corner libraries not used in the nominal flow
+pdk/sky130/sky130_fd_sc_hd__ff_n40C_1v95.lib
+pdk/sky130/sky130_fd_sc_hd__ss_n40C_1v40.lib
+
+# Python caches and compiler intermediates
+__pycache__/
+*.pyc
+
+# Simulation waveform dumps and temporary logs
+*.vcd
+*.fst
+*.log.tmp

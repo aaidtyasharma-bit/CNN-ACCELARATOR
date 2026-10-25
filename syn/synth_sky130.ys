@@ -1,0 +1,30 @@
+# Yosys Synthesis to Sky130 Standard Cells for OpenROAD Physical Flow
+
+read_verilog -sv rtl/cnn_mac.sv
+read_verilog -sv rtl/cnn_relu_sat_u8.sv
+read_verilog -sv rtl/cnn_maxpool2x2.sv
+read_verilog -sv rtl/cnn_conv_engine.sv
+read_verilog -sv rtl/cnn_fc_classifier.sv
+read_verilog -sv rtl/cnn_accelerator_top.sv
+
+hierarchy -check -top cnn_accelerator_top
+
+proc
+opt
+fsm
+opt
+memory
+opt
+
+# Technology mapping to Sky130HD library
+synth -top cnn_accelerator_top -flatten
+dfflibmap -liberty pdk/sky130/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty pdk/sky130/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+clean
+opt_clean -purge
+check
+
+stat -liberty pdk/sky130/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+write_verilog -noattr openroad/results/cnn_accelerator_sky130.v

@@ -1,0 +1,72 @@
+[
+  {
+    "sample_id": 0,
+    "true_label": 7,
+    "hex_file": "test_stimulus/test_img_0_digit_7.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  },
+  {
+    "sample_id": 1,
+    "true_label": 2,
+    "hex_file": "test_stimulus/test_img_1_digit_2.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  },
+  {
+    "sample_id": 2,
+    "true_label": 1,
+    "hex_file": "test_stimulus/test_img_2_digit_1.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  },
+  {
+    "sample_id": 3,
+    "true_label": 0,
+    "hex_file": "test_stimulus/test_img_3_digit_0.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  },
+  {
+    "sample_id": 4,
+    "true_label": 4,
+    "hex_file": "test_stimulus/test_img_4_digit_4.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  },
+  {
+    "sample_id": 5,
+    "true_label": 1,
+    "hex_file": "test_stimulus/test_img_5_digit_1.hex",
+    "scale": 0.02211620844900608,
+    "pixels": 784
+  },
+  {
+    "sample_id": 6,
+    "true_label": 4,
+    "hex_file": "test_stimulus/test_img_6_digit_4.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  },
+  {
+    "sample_id": 7,
+    "true_label": 9,
+    "hex_file": "test_stimulus/test_img_7_digit_9.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  },
+  {
+    "sample_id": 8,
+    "true_label": 5,
+    "hex_file": "test_stimulus/test_img_8_digit_5.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  },
+  {
+    "sample_id": 9,
+    "true_label": 9,
+    "hex_file": "test_stimulus/test_img_9_digit_9.hex",
+    "scale": 0.0222164299339056,
+    "pixels": 784
+  }
+]

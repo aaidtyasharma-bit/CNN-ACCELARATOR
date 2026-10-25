@@ -1,0 +1,193 @@
+{
+  "architecture": "LeNet-5",
+  "epochs": 8,
+  "best_test_accuracy": 99.19,
+  "total_time_seconds": 69.63351678848267,
+  "hyperparameters": {
+    "dropout": 0.25,
+    "weight_decay": 0.0001,
+    "learning_rate": 0.001,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingLR",
+    "augmentation": "RandomAffine(10deg, translate=0.06)"
+  },
+  "hardware": {
+    "architecture": "LeNet-5",
+    "quantization": "Symmetric INT8 (-128 to 127)",
+    "layers": {
+      "conv1.weight": {
+        "c_name": "conv1_weight",
+        "shape": [
+          6,
+          1,
+          5,
+          5
+        ],
+        "num_elements": 150,
+        "scale": 0.0038243457674980164,
+        "bram_start_addr": 0,
+        "bram_end_addr": 149,
+        "hex_file": "hex/conv1_weight.hex"
+      },
+      "conv1.bias": {
+        "c_name": "conv1_bias",
+        "shape": [
+          6
+        ],
+        "num_elements": 6,
+        "scale": 0.0014793290756642818,
+        "bram_start_addr": 150,
+        "bram_end_addr": 155,
+        "hex_file": "hex/conv1_bias.hex"
+      },
+      "conv2.weight": {
+        "c_name": "conv2_weight",
+        "shape": [
+          16,
+          6,
+          5,
+          5
+        ],
+        "num_elements": 2400,
+        "scale": 0.004055843222886324,
+        "bram_start_addr": 156,
+        "bram_end_addr": 2555,
+        "hex_file": "hex/conv2_weight.hex"
+      },
+      "conv2.bias": {
+        "c_name": "conv2_bias",
+        "shape": [
+          16
+        ],
+        "num_elements": 16,
+        "scale": 0.0010368777438998222,
+        "bram_start_addr": 2556,
+        "bram_end_addr": 2571,
+        "hex_file": "hex/conv2_bias.hex"
+      },
+      "fc1.weight": {
+        "c_name": "fc1_weight",
+        "shape": [
+          120,
+          400
+        ],
+        "num_elements": 48000,
+        "scale": 0.002743793185800314,
+        "bram_start_addr": 2572,
+        "bram_end_addr": 50571,
+        "hex_file": "hex/fc1_weight.hex"
+      },
+      "fc1.bias": {
+        "c_name": "fc1_bias",
+        "shape": [
+          120
+        ],
+        "num_elements": 120,
+        "scale": 0.0009591159177944064,
+        "bram_start_addr": 50572,
+        "bram_end_addr": 50691,
+        "hex_file": "hex/fc1_bias.hex"
+      },
+      "fc2.weight": {
+        "c_name": "fc2_weight",
+        "shape": [
+          84,
+          120
+        ],
+        "num_elements": 10080,
+        "scale": 0.0025351496879011393,
+        "bram_start_addr": 50692,
+        "bram_end_addr": 60771,
+        "hex_file": "hex/fc2_weight.hex"
+      },
+      "fc2.bias": {
+        "c_name": "fc2_bias",
+        "shape": [
+          84
+        ],
+        "num_elements": 84,
+        "scale": 0.0018074937397614121,
+        "bram_start_addr": 60772,
+        "bram_end_addr": 60855,
+        "hex_file": "hex/fc2_bias.hex"
+      },
+      "fc3.weight": {
+        "c_name": "fc3_weight",
+        "shape": [
+          10,
+          84
+        ],
+        "num_elements": 840,
+        "scale": 0.0020876144990324974,
+        "bram_start_addr": 60856,
+        "bram_end_addr": 61695,
+        "hex_file": "hex/fc3_weight.hex"
+      },
+      "fc3.bias": {
+        "c_name": "fc3_bias",
+        "shape": [
+          10
+        ],
+        "num_elements": 10,
+        "scale": 0.0012851516949012876,
+        "bram_start_addr": 61696,
+        "bram_end_addr": 61705,
+        "hex_file": "hex/fc3_bias.hex"
+      }
+    },
+    "total_parameters": 61706,
+    "total_weight_bytes": 61706
+  },
+  "history": {
+    "train_loss": [
+      0.35856682460308076,
+      0.12955991959919533,
+      0.10067815322726965,
+      0.08113275898322463,
+      0.07096500319205225,
+      0.05997587442199389,
+      0.05554386492744088,
+      0.05093367322791988
+    ],
+    "train_acc": [
+      88.56333333333333,
+      95.91499999999999,
+      96.88333333333333,
+      97.485,
+      97.82833333333333,
+      98.08833333333334,
+      98.26333333333334,
+      98.42333333333333
+    ],
+    "test_loss": [
+      0.0829255435615778,
+      0.03918790789321065,
+      0.03936794600449502,
+      0.03105499059893191,
+      0.027346695819869638,
+      0.026592373754829167,
+      0.0253068333491683,
+      0.022565771150402723
+    ],
+    "test_acc": [
+      97.02,
+      98.67,
+      98.7,
+      98.99,
+      99.03999999999999,
+      99.1,
+      99.16,
+      99.19
+    ],
+    "lr": [
+      0.001,
+      0.0009638427779428612,
+      0.0008608757210636101,
+      0.0007067746303734177,
+      0.000525,
+      0.0003432253696265824,
+      0.00018912427893638995,
+      8.61572220571388e-05
+    ]
+  }
+}

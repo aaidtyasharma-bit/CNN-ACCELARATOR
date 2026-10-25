@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CNN Accelerator Hardware Schematics & RTL Architecture</title>
+  <style>
+    body {
+      background-color: #0b0f19;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+    }
+    .header {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+    h1 {
+      color: #38bdf8;
+      margin: 0 0 8px 0;
+      font-size: 26px;
+    }
+    p {
+      color: #94a3b8;
+      margin: 4px 0;
+      line-height: 1.5;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+    .stat-title {
+      font-size: 13px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stat-val {
+      font-size: 28px;
+      font-weight: bold;
+      color: #f8fafc;
+      margin-top: 6px;
+    }
+    .section-card {
+      background-color: #131b2e;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #60a5fa;
+      margin-top: 0;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 10px;
+    }
+    .svg-container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 15px;
+      overflow-x: auto;
+      text-align: center;
+    }
+    .svg-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    code {
+      background-color: #0f172a;
+      color: #38bdf8;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Hardware Architecture & Synthesized Schematics</h1>
+    <p>Synthesized with <strong>Yosys Open SYnthesis Suite (v0.52)</strong> targeting generic logic gates.</p>
+    <p>Displays the actual digital hardware cells, registers, multiplexers, and arithmetic dataflow built for the CNN accelerator.</p>
+  </div>
+
+  <div class="grid">
+    <div class="stat-card">
+      <div class="stat-title">Total Logic Cells</div>
+      <div class="stat-val" style="color: #38bdf8;">1,623</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-title">Sequential Registers (DFFs)</div>
+      <div class="stat-val" style="color: #4ade80;">77</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-title">Multiplier / ALU XOR Gates</div>
+      <div class="stat-val" style="color: #f472b6;">391</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-title">Data Routing Multiplexers</div>
+      <div class="stat-val" style="color: #fbbf24;">136</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>1. Full Chip Flattened Gate-Level Netlist (Complete Chip Circuit)</h2>
+    <p>Every sub-module (MAC multipliers, accumulators, ReLU clamping networks, and MaxPool trees) fully flattened into interconnected logic gates and registers.</p>
+    <div class="svg-container">
+      <img src="full_chip_flattened.svg" alt="Full Chip Flattened Netlist">
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>2. Top-Level Hierarchical Module (<code>cnn_accelerator_top</code>)</h2>
+    <p>Multiplexes input activations and weights between the <strong>Convolution Engine</strong> (<code>u_conv</code>) and the <strong>Fully Connected Classifier</strong> (<code>u_fc</code>), feeding the parallel <strong>2x2 Max Pooling Engine</strong> (<code>u_pool</code>).</p>
+    <div class="svg-container">
+      <img src="schematic_top.svg" alt="Top Level Schematic">
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>3. Convolution Engine (<code>cnn_conv_engine</code>)</h2>
+    <p>Integrates the signed INT8 MAC unit with the ReLU activation and saturation logic (<code>cnn_relu_sat_u8</code>).</p>
+    <div class="svg-container">
+      <img src="schematic_conv.svg" alt="Conv Engine Schematic">
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>4. 8-Bit Signed MAC Unit (<code>cnn_mac</code>)</h2>
+    <p>Synthesized hardware multiplier ($8 \times 8 \to 16$-bit signed) accumulator with 32-bit register accumulator and synchronous clear.</p>
+    <div class="svg-container">
+      <img src="schematic_mac.svg" alt="MAC Unit Schematic">
+    </div>
+  </div>
+
+</body>
+</html>

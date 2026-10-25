@@ -1,0 +1,41 @@
+======================================================================
+  LeNet-5 Training & Hardware Export (Optimized Hyperparameters)  
+======================================================================
+Project Directory:  /home/ady/CNN ACCELARATOR
+Device:             cpu
+Epochs:             8
+Batch Size:         64
+Initial LR:         0.001
+Weight Decay:       0.0001
+Dropout Rate:       0.25
+LR Scheduler:       CosineAnnealingLR (T_max=8)
+Data Augmentation:  RandomAffine(degrees=10, translate=(0.06, 0.06))
+----------------------------------------------------------------------
+Loading MNIST dataset with augmentation...
+Train samples: 60000 | Test samples: 10000
+----------------------------------------------------------------------
+Epoch [01/08] LR: 0.001000 | Train Loss: 0.3586 (Acc: 88.56%) | Test Loss: 0.0829 (Acc: 97.02%) | Time: 12.4s
+Epoch [02/08] LR: 0.000964 | Train Loss: 0.1296 (Acc: 95.91%) | Test Loss: 0.0392 (Acc: 98.67%) | Time: 8.2s
+Epoch [03/08] LR: 0.000861 | Train Loss: 0.1007 (Acc: 96.88%) | Test Loss: 0.0394 (Acc: 98.70%) | Time: 8.1s
+Epoch [04/08] LR: 0.000707 | Train Loss: 0.0811 (Acc: 97.48%) | Test Loss: 0.0311 (Acc: 98.99%) | Time: 8.2s
+Epoch [05/08] LR: 0.000525 | Train Loss: 0.0710 (Acc: 97.83%) | Test Loss: 0.0273 (Acc: 99.04%) | Time: 8.2s
+Epoch [06/08] LR: 0.000343 | Train Loss: 0.0600 (Acc: 98.09%) | Test Loss: 0.0266 (Acc: 99.10%) | Time: 8.0s
+Epoch [07/08] LR: 0.000189 | Train Loss: 0.0555 (Acc: 98.26%) | Test Loss: 0.0253 (Acc: 99.16%) | Time: 8.1s
+Epoch [08/08] LR: 0.000086 | Train Loss: 0.0509 (Acc: 98.42%) | Test Loss: 0.0226 (Acc: 99.19%) | Time: 8.4s
+----------------------------------------------------------------------
+Training completed in 69.6s
+Best Test Accuracy: 99.19%
+----------------------------------------------------------------------
+Saved PyTorch weights: /home/ady/CNN ACCELARATOR/models/lenet5_final.pth
+
+Exporting Hardware INT8 Artifacts...
+  - Verilog Memory HEX (.mem/.hex): /home/ady/CNN ACCELARATOR/models/hardware/hex
+  - Combined Memory Image:          /home/ady/CNN ACCELARATOR/models/hardware/lenet5_all_weights.hex (61706 bytes)
+  - C Header File:                  /home/ady/CNN ACCELARATOR/models/hardware/lenet5_weights.h
+  - Hardware Descriptor:            /home/ady/CNN ACCELARATOR/models/hardware/hardware_descriptor.json
+  - Verilog Test Stimulus:          /home/ady/CNN ACCELARATOR/models/hardware/test_stimulus
+
+Saved training curves: /home/ady/CNN ACCELARATOR/outputs/loss_accuracy_curve.png
+Saved sample predictions: /home/ady/CNN ACCELARATOR/outputs/sample_predictions.png
+Saved metrics summary: /home/ady/CNN ACCELARATOR/logs/training_summary.json
+======================================================================

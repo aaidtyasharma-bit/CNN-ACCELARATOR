@@ -1,0 +1,42 @@
+# Yosys Synthesis Script for CNN Accelerator
+# Target: Generic CMOS Library & RTLIL Netlist Generation
+
+# 1. Read SystemVerilog RTL modules
+read_verilog -sv rtl/cnn_mac.sv
+read_verilog -sv rtl/cnn_relu_sat_u8.sv
+read_verilog -sv rtl/cnn_maxpool2x2.sv
+read_verilog -sv rtl/cnn_conv_engine.sv
+read_verilog -sv rtl/cnn_fc_classifier.sv
+read_verilog -sv rtl/cnn_accelerator_top.sv
+
+# 2. Hierarchy check and elaboration
+hierarchy -check -top cnn_accelerator_top
+
+# 3. High-level synthesis & optimizations
+proc
+opt
+fsm
+opt
+memory
+opt
+
+# 4. Coarse-grain synthesis
+synth -top cnn_accelerator_top
+
+# 5. Technology mapping to standard logic gates
+abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX
+
+# 6. Post-mapping cleanup
+clean
+opt_clean -purge
+
+# 7. Check for design integrity
+check
+
+# 8. Report synthesis statistics
+stat
+
+# 9. Write outputs
+write_verilog -noattr syn/cnn_accelerator_top_netlist.v
+write_json syn/cnn_accelerator_top.json
+show -format dot -prefix syn/cnn_accelerator_top_schematic

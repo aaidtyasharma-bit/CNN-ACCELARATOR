@@ -1,0 +1,167 @@
+{
+  "architecture": "LeNet-5",
+  "precision": "INT8 Symmetric",
+  "total_parameters": 61706,
+  "total_bytes": 61706,
+  "layers": {
+    "conv1.weight": {
+      "c_name": "conv1_weight",
+      "shape": [
+        6,
+        1,
+        5,
+        5
+      ],
+      "elements": 150,
+      "scale": 0.0038243457674980164,
+      "min_int8": -127,
+      "max_int8": 97,
+      "bram_address_range": [
+        0,
+        149
+      ],
+      "hex_path": "hex/conv1_weight.hex"
+    },
+    "conv1.bias": {
+      "c_name": "conv1_bias",
+      "shape": [
+        6
+      ],
+      "elements": 6,
+      "scale": 0.0014793290756642818,
+      "min_int8": -76,
+      "max_int8": 127,
+      "bram_address_range": [
+        150,
+        155
+      ],
+      "hex_path": "hex/conv1_bias.hex"
+    },
+    "conv2.weight": {
+      "c_name": "conv2_weight",
+      "shape": [
+        16,
+        6,
+        5,
+        5
+      ],
+      "elements": 2400,
+      "scale": 0.004055843222886324,
+      "min_int8": -127,
+      "max_int8": 84,
+      "bram_address_range": [
+        156,
+        2555
+      ],
+      "hex_path": "hex/conv2_weight.hex"
+    },
+    "conv2.bias": {
+      "c_name": "conv2_bias",
+      "shape": [
+        16
+      ],
+      "elements": 16,
+      "scale": 0.0010368777438998222,
+      "min_int8": -127,
+      "max_int8": 122,
+      "bram_address_range": [
+        2556,
+        2571
+      ],
+      "hex_path": "hex/conv2_bias.hex"
+    },
+    "fc1.weight": {
+      "c_name": "fc1_weight",
+      "shape": [
+        120,
+        400
+      ],
+      "elements": 48000,
+      "scale": 0.002743793185800314,
+      "min_int8": -127,
+      "max_int8": 107,
+      "bram_address_range": [
+        2572,
+        50571
+      ],
+      "hex_path": "hex/fc1_weight.hex"
+    },
+    "fc1.bias": {
+      "c_name": "fc1_bias",
+      "shape": [
+        120
+      ],
+      "elements": 120,
+      "scale": 0.0009591159177944064,
+      "min_int8": -83,
+      "max_int8": 127,
+      "bram_address_range": [
+        50572,
+        50691
+      ],
+      "hex_path": "hex/fc1_bias.hex"
+    },
+    "fc2.weight": {
+      "c_name": "fc2_weight",
+      "shape": [
+        84,
+        120
+      ],
+      "elements": 10080,
+      "scale": 0.0025351496879011393,
+      "min_int8": -119,
+      "max_int8": 127,
+      "bram_address_range": [
+        50692,
+        60771
+      ],
+      "hex_path": "hex/fc2_weight.hex"
+    },
+    "fc2.bias": {
+      "c_name": "fc2_bias",
+      "shape": [
+        84
+      ],
+      "elements": 84,
+      "scale": 0.0018074937397614121,
+      "min_int8": -79,
+      "max_int8": 127,
+      "bram_address_range": [
+        60772,
+        60855
+      ],
+      "hex_path": "hex/fc2_bias.hex"
+    },
+    "fc3.weight": {
+      "c_name": "fc3_weight",
+      "shape": [
+        10,
+        84
+      ],
+      "elements": 840,
+      "scale": 0.0020876144990324974,
+      "min_int8": -127,
+      "max_int8": 110,
+      "bram_address_range": [
+        60856,
+        61695
+      ],
+      "hex_path": "hex/fc3_weight.hex"
+    },
+    "fc3.bias": {
+      "c_name": "fc3_bias",
+      "shape": [
+        10
+      ],
+      "elements": 10,
+      "scale": 0.0012851516949012876,
+      "min_int8": -127,
+      "max_int8": 96,
+      "bram_address_range": [
+        61696,
+        61705
+      ],
+      "hex_path": "hex/fc3_bias.hex"
+    }
+  }
+}

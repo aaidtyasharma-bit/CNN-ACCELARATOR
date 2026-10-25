@@ -1,0 +1,43 @@
+[*]
+[*] GTKWave Save File for LeNet-5 End-to-End Inference Pipeline
+[*]
+[dumpfile] "/home/ady/CNN ACCELARATOR/outputs/waveforms/lenet5_end_to_end.vcd"
+[savefile] "/home/ady/CNN ACCELARATOR/outputs/waveforms/lenet5_end_to_end.gtkw"
+[timestart] 7900000
+[size] 1600 950
+[pos] -1 -1
+*-18.000000 7965000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_lenet5_end_to_end.
+[treeopen] tb_lenet5_end_to_end.dut.
+@28
+tb_lenet5_end_to_end.clk
+tb_lenet5_end_to_end.rst_n
+tb_lenet5_end_to_end.start
+tb_lenet5_end_to_end.busy
+tb_lenet5_end_to_end.done
+@200
+-
+-STATE (3=CONV1, 4=POOL1, 5=CONV2, 6=POOL2, 7=FC1, 8=FC2, 9=FC3, 10=ARGMAX, 11=DONE)
+@24
+tb_lenet5_end_to_end.dut.state[3:0]
+@200
+-
+-FINAL CLASSIFICATION RESULT
+@24
+tb_lenet5_end_to_end.predicted_digit[3:0]
+@200
+-
+-RAW 10-CLASS OUTPUT LOGITS
+@-25
+tb_lenet5_end_to_end.class_logits[0][31:0]
+tb_lenet5_end_to_end.class_logits[1][31:0]
+tb_lenet5_end_to_end.class_logits[2][31:0]
+tb_lenet5_end_to_end.class_logits[3][31:0]
+tb_lenet5_end_to_end.class_logits[4][31:0]
+tb_lenet5_end_to_end.class_logits[5][31:0]
+tb_lenet5_end_to_end.class_logits[6][31:0]
+tb_lenet5_end_to_end.class_logits[7][31:0]
+tb_lenet5_end_to_end.class_logits[8][31:0]
+tb_lenet5_end_to_end.class_logits[9][31:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Save File for tb_cnn_mac (Verilator Simulation)
+[*]
+[dumpfile] "/home/ady/CNN ACCELARATOR/outputs/waveforms/verilator_mac.vcd"
+[savefile] "/home/ady/CNN ACCELARATOR/outputs/waveforms/verilator_mac.gtkw"
+[timestart] 0
+[size] 1600 900
+[pos] -1 -1
+*-18.000000 45000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_cnn_mac.
+[treeopen] tb_cnn_mac.dut.
+@28
+tb_cnn_mac.clk
+tb_cnn_mac.rst_n
+tb_cnn_mac.start
+tb_cnn_mac.busy
+tb_cnn_mac.in_valid
+tb_cnn_mac.last
+@24
+tb_cnn_mac.data_in[7:0]
+tb_cnn_mac.weight_in[7:0]
+@25
+tb_cnn_mac.dut.product[15:0]
+tb_cnn_mac.accumulator[31:0]
+@28
+tb_cnn_mac.done
+[pattern_trace] 1
+[pattern_trace] 0
