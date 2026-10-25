@@ -129,10 +129,23 @@ The repository includes standalone HTML5 / SVG viewers to inspect the design wit
 - **`syn/view_schematics.html`**: Interactive schematic explorer.
 
 <p align="center">
-  <img src="openroad/openroad_full_chip_layout.png" alt="OpenROAD Full Chip Silicon Layout" width="700"/>
+  <img src="openroad/screenshots/openroad_gui_tapeout.png" alt="OpenROAD GUI Tapeout Assembly" width="800"/>
   <br/>
-  <em>Figure: Full Chip Physical Silicon Layout rendered from OpenROAD Tapeout DEF in SkyWater 130nm HD</em>
+  <em>Figure 1: OpenROAD Interactive GUI — Full Chip Physical Placement & Tapeout Assembly in SkyWater 130nm</em>
 </p>
+
+<p align="center">
+  <img src="openroad/screenshots/openroad_gui_placement.png" alt="OpenROAD GUI Standard Cell Placement" width="800"/>
+  <br/>
+  <em>Figure 2: OpenROAD Interactive GUI — Standard Cell Rows, CTS Clock Tree, and I/O Pin Placement</em>
+</p>
+
+<p align="center">
+  <img src="openroad/openroad_full_chip_layout.png" alt="OpenROAD Full Chip Silicon Layout" width="800"/>
+  <br/>
+  <em>Figure 3: Silicon Layout Map rendered from OpenROAD DEF with Power Distribution Network (PDN Met4/Met5)</em>
+</p>
+
 
 
 ---
